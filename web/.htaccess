@@ -1,0 +1,12 @@
+RewriteEngine on
+
+#RewriteCond %{HTTPS} !=on
+# This checks to make sure the connection is not already HTTPS
+#RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
